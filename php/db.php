@@ -1,9 +1,8 @@
-<?php   
+<?php
 $host = "localhost";
-$db = "c2_agoot";
+$db = "C2_carl";
 $user = "root";
 $pass = "";
-
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,4 +11,5 @@ try {
     echo json_encode(["error" => $e->getMessage()]);
     exit;
 }
+
 ?>

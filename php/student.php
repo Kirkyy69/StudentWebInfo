@@ -137,8 +137,6 @@ if ($method === "GET") {
                 OR students.middlename LIKE :search
                 OR students.gender LIKE :search
                 OR students.email LIKE :search
-                OR acadlevels.name LIKE :search
-                OR sections.name LIKE :search
 
             ORDER BY students.id DESC
         ";
