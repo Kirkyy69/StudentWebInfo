@@ -1,7 +1,7 @@
 let students = [];
 let formMode = "Add";
 let selectedStudentID = -1;
-const baseURL = "https://studentinfoapi-7lpw.onrender.com/api/students";
+const baseURL = " https://studentinfoapi-2.onrender.com";
 
 const $tbody = $("#student-data");
 const $studentSearch = $("#student-search");
@@ -93,8 +93,8 @@ $saveBtn.on("click", function () {
       firstname: $txtFirstname.val(),
       middlename: $txtMiddlename.val(),
       gender: $txtGender.val(),
-      acadlevelid: $txtYearLevel.val(),
-      sectionid: $txtSection.val(),
+      acadlevel_id: $txtYearLevel.val(),
+      section_id: $txtSection.val(),
       email: $txtEmail.val(),
     };
 
@@ -233,18 +233,18 @@ function populateFormFields(student) {
   if (!student) {
     return;
   }
-
+console.log("Populating form fields with student:", student);
   $txtLastname.val(student.lastname);
   $txtFirstname.val(student.firstname);
   $txtMiddlename.val(student.middlename);
-  $txtGender.val(student.gender);
+  $txtGender.val(student.gender[0]);
   $txtYearLevel.val(student.acadlevel_id);
   $txtSection.val(student.section_id);
   $txtEmail.val(student.email);
 }
 
 function toggleButtons(
-  showSaveCancelBtn = false,
+  showSaveCancelBtn = false, 
   showAddEditDeleteBtn = false,
 ) {
   $saveBtn.toggleClass("display-none", !showSaveCancelBtn);
@@ -525,6 +525,7 @@ function getAllSections() {
 }
 
 function addStudent(student) {
+  console.log("Adding student:", student);
   
   return $.ajax({
     url: baseURL,
@@ -536,6 +537,8 @@ function addStudent(student) {
 }
 
 function editStudent(student) {
+  console.log("Editing student:", student);
+  
   return $.ajax({
     url: baseURL,
     type: "PUT",
@@ -554,3 +557,4 @@ function deleteStudent(studentId) {
     dataType: "json",
   });
 }
+
